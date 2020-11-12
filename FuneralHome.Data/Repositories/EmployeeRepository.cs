@@ -1,11 +1,7 @@
 ﻿using FuneralHome.Data.Entities;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FuneralHome.Data.Repositories
 {
@@ -19,7 +15,7 @@ namespace FuneralHome.Data.Repositories
         public IEnumerable<Employee> GetByIds(IEnumerable<int> employeeids)
         {
             return _ctx.Employees
-                .Include(x => x.FuneralEmployees.Select(y=>y.Funeral))
+                .Include(x => x.FuneralEmployees.Select(y => y.Funeral))
                 .Where(x => employeeids.Contains(x.ID))
                 .AsNoTracking()
                 .ToList();

@@ -11,6 +11,6 @@ namespace FuneralHome.Data.Entities
         public string Phone { get; set; }
         public int Position { get; set; }
 
-        public ICollection<FuneralEmployee> FuneralEmployees { get; set; }
+        public virtual ICollection<FuneralEmployee> FuneralEmployees { get; set; }
     }
 }

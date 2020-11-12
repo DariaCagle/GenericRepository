@@ -1,16 +1,10 @@
 ﻿using AutoMapper;
-using AutoMapper.Configuration.Conventions;
-using AutoMapper.Internal;
 using FuneralHome.Data.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Migrations;
-using System.Data.SqlClient;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
 
 namespace FuneralHome.Data.Repositories
 {
@@ -33,15 +27,16 @@ namespace FuneralHome.Data.Repositories
                 .ToList();
         }
 
-        public TEntity GetById(int id)
+        public TEntity GetBy(Func<TEntity, bool> func)
         {
             return _dbSet
-                .Find(id);
+                .FirstOrDefault(func);
         }
 
-        public void Update(TEntity model, int id)
+        public void Update(TEntity model, int id, Func<TEntity, bool> func)
         {
-            var entity = GetById(id);
+
+            var entity = GetBy(func);
 
             IMapper _mapper;
             var config = new MapperConfiguration(cfg =>

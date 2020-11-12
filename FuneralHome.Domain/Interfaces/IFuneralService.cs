@@ -1,5 +1,4 @@
-﻿using FuneralHome.Data;
-using FuneralHome.Domain.Models;
+﻿using FuneralHome.Domain.Models;
 using System.Collections.Generic;
 
 namespace FuneralHome.Domain.Interfaces

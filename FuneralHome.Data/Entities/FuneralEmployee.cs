@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FuneralHome.Data.Entities
+﻿namespace FuneralHome.Data.Entities
 {
     public class FuneralEmployee
     {

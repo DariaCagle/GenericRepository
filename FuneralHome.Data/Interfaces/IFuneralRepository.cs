@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 
 namespace FuneralHome.Data.Interfaces
 {
     public interface IFuneralRepository<TEntity> where TEntity : class
     {
         TEntity Create(TEntity model);
-        TEntity GetById(int id);
+        TEntity GetBy(Func<TEntity, bool> func);
         IEnumerable<TEntity> GetAll();
         void Remove(TEntity model);
-        void Update(TEntity model, int id);
+        void Update(TEntity model, int id, Func<TEntity, bool> func);
 
 
     }

@@ -12,6 +12,6 @@ namespace FuneralHome.Data.Entities
         public int ClientId { get; set; }
         public Client Client { get; set; }
 
-        public ICollection<FuneralEmployee> FuneralEmployees { get; set; }
+        public virtual ICollection<FuneralEmployee> FuneralEmployees { get; set; }
     }
 }

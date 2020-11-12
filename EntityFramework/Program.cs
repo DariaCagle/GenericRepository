@@ -1,27 +1,25 @@
-﻿using FuneralHome.Common.Enums;
+﻿using AutoMapper;
 using FuneralHome.Controllers;
 using FuneralHome.Models.PostModels;
-using System;
-using System.Collections.Generic;
-using FuneralHome.Data;
-using AutoMapper;
 using FuneralHome.Models.ViewModels;
+using System;
 
 namespace EntityFramework
 {
     class Program
     {
-        
+
         static void Main(string[] args)
         {
             var _controller = new FuneralsController();
 
-            var model = _controller.GetById(1);
-            var modelForUpdate = ViewToPost<FuneralViewModel, FuneralPostModel>(model);
+            var model = _controller.GetById(2);
 
-            modelForUpdate.DateUtc = DateTime.UtcNow.AddDays(5);
-                        
-            _controller.Update(modelForUpdate, 1);
+            //var modelForUpdate = ViewToPost<FuneralViewModel, FuneralPostModel>(model);
+
+            //modelForUpdate.DateUtc = DateTime.UtcNow.AddDays(5);
+
+            //_controller.Update(modelForUpdate, 1);
 
         }
 

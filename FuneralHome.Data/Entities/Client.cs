@@ -11,6 +11,6 @@ namespace FuneralHome.Data.Entities
         public string Address { get; set; }
         public int? DeathCertificateNumber { get; set; }
 
-        public ICollection<Funeral> Funerals { get; set; }
+        public virtual ICollection<Funeral> Funerals { get; set; }
     }
 }

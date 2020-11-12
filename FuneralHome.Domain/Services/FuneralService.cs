@@ -5,10 +5,8 @@ using FuneralHome.Data.Interfaces;
 using FuneralHome.Data.Repositories;
 using FuneralHome.Domain.Interfaces;
 using FuneralHome.Domain.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Security.Cryptography.X509Certificates;
 
 namespace FuneralHome.Domain.Services
@@ -51,7 +49,7 @@ namespace FuneralHome.Domain.Services
             var employeeIds = model.Employees.Select(x => x.ID);
             var employees = _employeeRepository.GetByIds(employeeIds);
             var funerals = employees
-                .SelectMany(x => x.FuneralEmployees.Select(y=>y.Funeral))
+                .SelectMany(x => x.FuneralEmployees.Select(y => y.Funeral))
                 .Where(x => model.DateUtc.Date == x.DateUtc.Date)
                 .ToList();
 
@@ -72,12 +70,12 @@ namespace FuneralHome.Domain.Services
         {
             var funeral = _mapper.Map<Funeral>(model);
 
-            _funeralRepository.Update(funeral, id);
+            _funeralRepository.Update(funeral, id, x => x.Id == id);
         }
 
         public FuneralModel GetById(int id)
         {
-            var funeral = _funeralRepository.GetById(id);
+            var funeral = _funeralRepository.GetBy(x=>x.Id == id);
             return _mapper.Map<FuneralModel>(funeral);
         }
 

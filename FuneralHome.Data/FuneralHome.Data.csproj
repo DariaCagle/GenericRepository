@@ -73,7 +73,6 @@
     <Compile Include="Repositories\EmployeeRepository.cs" />
     <Compile Include="Repositories\FuneralHomeRepository.cs" />
     <Compile Include="Repositories\FuneralRepository.cs" />
-    <Compile Include="Param.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
