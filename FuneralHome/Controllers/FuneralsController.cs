@@ -59,5 +59,12 @@ namespace FuneralHome.Controllers
             var funeral = _funeralService.GetById(id);
             return _mapper.Map<FuneralViewModel>(funeral);
         }
+
+        public void Remove(FuneralPostModel model)
+        {
+
+            var funeral = _mapper.Map<FuneralModel>(model);
+            _funeralService.Remove(funeral);
+        }
     }
 }

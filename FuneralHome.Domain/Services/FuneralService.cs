@@ -47,11 +47,6 @@ namespace FuneralHome.Domain.Services
 
         public FuneralModel Create(FuneralModel model)
         {
-            var startTime = DateTime.UtcNow.AddHours(1);
-            var endTime = DateTime.UtcNow.AddHours(7);
-
-            // var periodStart = DateTime.UtcNow.Date;
-            //var periodEnd = startTime.AddHours(24).AddMilliseconds(-1);
 
             var employeeIds = model.Employees.Select(x => x.ID);
             var employees = _employeeRepository.GetByIds(employeeIds);
@@ -66,13 +61,7 @@ namespace FuneralHome.Domain.Services
                     throw new System.Exception($"Employee {employee.FirstName} {employee.LastName} is busy at this date");
             }
 
-            //employees.ToList().ForEach(employee =>
-            //{
-            //    throw new System.Exception($"Employee {employee.FirstName} {employee.LastName} is busy at this date");
-            //});
-
             var funeral = _mapper.Map<Funeral>(model);
-            //funeral.Employees = employees.ToList(); - если нет таблицы
 
             var newFuneral = _funeralRepository.Create(funeral);
 
@@ -90,6 +79,13 @@ namespace FuneralHome.Domain.Services
         {
             var funeral = _funeralRepository.GetById(id);
             return _mapper.Map<FuneralModel>(funeral);
+        }
+
+        public void Remove(FuneralModel model)
+        {
+
+            var funeral = _mapper.Map<Funeral>(model);
+            _funeralRepository.Remove(funeral);
         }
 
     }

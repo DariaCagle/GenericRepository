@@ -18,28 +18,11 @@ namespace FuneralHome.Data.Repositories
     {
         private readonly DbContext _ctx;
         private readonly DbSet<TEntity> _dbSet;
-        //private readonly IMapper _mapper;
 
         public FuneralHomeRepository(DbContext context)
         {
             _ctx = context;
             _dbSet = _ctx.Set<TEntity>();
-
-            //           var mapperConfig = new MapperConfiguration(cfg =>
-            //           {
-            //               cfg.CreateMap<TEntity, TEntity>(Expression < Func<TEntity, object> > FromExpression,
-            //                             Expression < Func<TEntity, object> > ToExpression)
-            //{
-            //                   Mapper.CreateMap<From, To>()
-            //                   .ForMember(ToExpression, opt => opt.MapFrom(FromExpression));
-            //               }
-
-            //               .ForMember(x => x.FuneralEmployees, opts => opts.MapFrom(src => src.FuneralEmployees.Select(x => new FuneralEmployee
-            //                {
-            //                    EmployeeId = x.EmployeeId
-            //                })));
-            //           });
-            //           _mapper = new Mapper(mapperConfig);
 
         }
 

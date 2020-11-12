@@ -15,10 +15,6 @@ namespace EntityFramework
         static void Main(string[] args)
         {
             var _controller = new FuneralsController();
-            //var funerals = _controller.GetAll();
-
-            //List<Param> funeralUpdateParams = new List<Param>();
-            //funeralUpdateParams.Add(new Param("DateUtc", DateTime.UtcNow.AddDays(54)));
 
             var model = _controller.GetById(1);
             var modelForUpdate = ViewToPost<FuneralViewModel, FuneralPostModel>(model);
@@ -26,6 +22,7 @@ namespace EntityFramework
             modelForUpdate.DateUtc = DateTime.UtcNow.AddDays(5);
                         
             _controller.Update(modelForUpdate, 1);
+
         }
 
         public static Destination ViewToPost<Source, Destination>(Source sourceModel)
